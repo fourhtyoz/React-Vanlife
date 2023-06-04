@@ -43,7 +43,7 @@ div.nav--links > a:hover {
 }
 
 .home--container {
-    background-image: url(../public/assets/van.jpg);
+    background-image: url(../public/assets/images/van.jpg);
     background-size: cover;
     font-size: 2.5rem;
     padding: 5rem;
@@ -147,4 +147,59 @@ footer {
 
 footer > h6 {
     padding: 1rem;
+}
+
+.van--list {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.van--card {
+    background-color: #fff2dd;
+    margin: 1rem;
+    padding: 1rem;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.van--image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-block: 1rem;
+}
+
+.van--name {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-block: 1rem;
+}
+
+.van--price {
+    background-color: #000000;
+    width: min-content;
+    padding: .5rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin: .5rem;
+}
+
+.van--description {
+    margin-block: 1rem;
+    text-justify: inter-word;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.van--type {
+    background-color: #000000;
+    width: min-content;
+    padding: .5rem;
+    color: white;
+    border-radius: 5px;
 }

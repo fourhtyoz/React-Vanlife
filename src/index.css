@@ -1,0 +1,150 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffd89e;
+}
+
+nav {
+    background-color: #fff2dd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+    box-shadow: 0 1px 3px #0000001a;
+}
+
+nav > h1 {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 3rem;
+}
+
+div.nav--links {
+    display: flex;
+}
+
+div.nav--links > a {
+    text-decoration: none;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+    background-color: #323232;
+    color: rgb(255, 255, 255);
+    transition: .5s;
+}
+
+div.nav--links > a:hover {
+    background-color: #ffd89e;
+    color: #323232;
+}
+
+.home--container {
+    background-image: url(../public/assets/van.jpg);
+    background-size: cover;
+    font-size: 2.5rem;
+    padding: 5rem;
+    line-height: 3.5rem;
+    color: #fff2dd;
+    height: 55vh;
+    text-shadow: 1px 0 #000000;
+}
+
+.home--header {
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #00000066;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.home--header--text {
+    /* padding: 2rem; */
+    margin-block: 5rem;
+    border-radius: 5px;
+    font-size: 2rem;
+    color: white;
+}
+
+.home--header--button {
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: #ffd89eaa;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.5rem;
+    transition: .5s;
+}
+
+.home--header--button:hover {
+    background-color: #ffd89eff;
+}
+
+.about--container {
+    background-color: #fff2dd;
+    margin-inline: 10rem;
+    padding-bottom: 1rem;
+}
+
+img {
+    width: 100%;
+}
+
+.about--container--header {
+    font-size: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.about--container--text {
+    padding: 1rem;
+}
+
+.about--container--block {
+    padding: 1rem;
+    margin: 1rem;
+    /* border: 1px solid black; */
+    background-color: #ffce72;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.about--container--block--button {
+    background-color: #ffce72;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 20rem;
+    font-size: 1.5rem;
+    color: black;
+    padding: 1rem;
+    margin-block: 1rem;
+    transition: .5s;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.about--container--block--button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+
+
+footer {
+    width: 100%;
+    background-color: rgb(21, 21, 21);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > h6 {
+    padding: 1rem;
+}

@@ -1,5 +1,5 @@
 import React from "react"
-import Van from "../components/Van"
+import Van from "../../components/Van"
 import { Link } from 'react-router-dom'
 
 export default function Vans() {

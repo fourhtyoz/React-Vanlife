@@ -13,11 +13,12 @@ export default function VanDetail() {
         <>
             {van ? (
                 <div className="van--detail">
-                    <img src={van.imageUrl} />
-                    <p>{van.name}</p>
-                    <p>{van.price}</p>
-                    <p>{van.type}</p>
-                    <p>{van.description}</p>
+                    <img className="van--detail--img" src={van.imageUrl} />
+                    <p className="van--detail--type">{van.type}</p>
+                    <p className="van--detail--name">{van.name}</p>
+                    <p className="van--detail--price">Price: ${van.price} a day</p>
+                    <p className="van--detail--description">{van.description}</p>
+                    <button className="van--detail--rent">Rent this van</button>
                 </div>) : 'Loading...'}
         </>
     )

@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Navbar() {
+    const activeStyle = {
+        backgroundColor: '#ffd89e',
+        color: '#323232'
+    }
+
     return (
         <nav className="nav--bar">
-            <h1>#Van Life</h1>
+            <Link to='/'><h1>#Van Life</h1></Link>
             <div className="nav--links">
-                <Link to='/'>Home page</Link>
-                <Link to='/about'>About us</Link>
-                <Link to='/vans'>Vans</Link>
+                <NavLink to='/host' style={({isActive}) => isActive ? activeStyle : null }>Host</NavLink>
+                <NavLink to='/about' style={({isActive}) => isActive ? activeStyle : null }>About us</NavLink>
+                <NavLink to='/vans' style={({isActive}) => isActive ? activeStyle : null }>Vans</NavLink>
             </div>
         </nav>
     )

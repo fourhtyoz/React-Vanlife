@@ -22,10 +22,10 @@ export default function HostVanDetail() {
                     <h1>{van.name}</h1>
                     <img className="host--van--detail--image" src={van.imageUrl} />
                     <p>${van.price} a day</p>
-                    <NavLink end to='' style={({isActive}) => isActive ? activeStyle : null}>Description</NavLink>
-                    <NavLink to='price' style={({isActive}) => isActive ? activeStyle : null}>Price</NavLink>
+                    <NavLink end to='.' style={({isActive}) => isActive ? activeStyle : null}>Description</NavLink>
+                    <NavLink to='pricing' style={({isActive}) => isActive ? activeStyle : null}>Price</NavLink>
                     <NavLink to='photos' style={({isActive}) => isActive ? activeStyle : null}  >Photos</NavLink>
-                    <Outlet />
+                    <Outlet context={van}/>
                 </> 
                 : <h1>Loading</h1>
             }

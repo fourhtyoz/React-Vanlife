@@ -32,7 +32,7 @@ export default function App() {
                         <Route path='vans' element={<HostVans />} />
                         <Route path='vans/:id' element={<HostVanDetail />}>
                             <Route index element={<HostVanDescription />} />
-                            <Route path='price' element={<HostVanPricing />} />
+                            <Route path='pricing' element={<HostVanPricing />} />
                             <Route path='photos' element={<HostVanPhotos />} />
                         </Route>
                         <Route path='reviews' element={<Reviews />} />

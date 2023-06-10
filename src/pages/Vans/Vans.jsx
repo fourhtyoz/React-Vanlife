@@ -1,46 +1,22 @@
-import React from "react"
 import Van from "../../components/Van"
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
 import { getVans } from "../../api"
 
+export function loader() {
+    // console.log('hi')
+    return getVans()
+}
+
 export default function Vans() {
-    const [vans, setVans] = React.useState([])
     const [searchParams, setSearchParams] = useSearchParams()
-    const [loading, setLoading] = React.useState(true)
-    const [error, setError] = React.useState(null)
+    const vans = useLoaderData()
     const typeFilter = searchParams.get('type')
-    
-    React.useEffect(() => {
-        async function loadVans() {
-            try {
-                let data = await getVans()
-                setVans(data)
-            } catch(err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadVans()
-    })
 
-    if (loading) {
-        return (
-            <h1>Loading...</h1>
-        )
-    }
-
-    if (error) {
-        return (
-            <h1>Error: {error.message}</h1>
-        )
-    }
-
-    // React.useEffect(() => {
-    //     fetch('/api/vans')
-    //         .then(res => res.json())
-    //         .then(data => setVans(data.vans))
-    // }, [])
+    // if (error) {
+    //     return (
+    //         <h1>Error: {error.message}</h1>
+    //     )
+    // }
 
     const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() === typeFilter.toLowerCase()) : vans
     const vanElements = displayedVans.map(van => <Link key={van.id} to={van.id} state={{type: typeFilter}}>
@@ -50,16 +26,6 @@ export default function Vans() {
                                                     price={van.price}
                                                     image={van.imageUrl}
                                                     type={van.type} /></Link>)
-
-    // function generateNewSearchParams(key, value) {
-    //     let sp = new URLSearchParams(searchParams)
-    //     if (value === null) {
-    //         sp.delete(key)
-    //     } else {
-    //         sp.set(key, value)
-    //     }
-    //     return `?${sp.toString()}`
-    // }
 
     function handleNewFilter(key, value) {
         setSearchParams(prev => {
@@ -84,11 +50,12 @@ export default function Vans() {
                 onClick={() => handleNewFilter('type', 'luxury')} 
                 className={`${typeFilter === 'luxury' ? 'selected' : ''}`}>Luxury</button>
             {typeFilter ? <button onClick={() => handleNewFilter('type', null)}>Clear</button> : ''}
+            {vanElements}
+
             {/* <Link to={generateNewSearchParams('type', 'simple')}>Simple</Link>
             <Link to={generateNewSearchParams('type', 'rugged')}>Rugged</Link>
             <Link to={generateNewSearchParams('type', 'luxury')}>Luxury</Link>
             <Link to={generateNewSearchParams('type', null)}>Clear</Link> */}
-            {vanElements}
         </div>
     )
 }

@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom'
-import { useState, useEffect} from 'react'
-import axios from 'axios'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+import { requireAuth } from '../../utils'
+
+export async function loader() {
+    await requireAuth()
+    return getHostVans()
+}
 
 export default function HostVans() {
-    const [vans, setVans] = useState([])
-    
-    useEffect(() => {
-        axios.get(`/api/host/vans`).then(res => setVans(res.data.vans))
-    }, [])
+    const vans = useLoaderData()
 
     return (
         <>  

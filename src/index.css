@@ -270,3 +270,7 @@ a {
     background-color: #000000;
     color: white;
 }
+
+.host--van--detail--image {
+    width: 400px;
+}

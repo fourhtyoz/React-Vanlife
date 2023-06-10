@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import 'axios'
+// import 'axios'
 import axios from "axios"
 
 export default function VanDetail() {

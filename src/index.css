@@ -274,3 +274,8 @@ a {
 .host--van--detail--image {
     width: 400px;
 }
+
+.selected {
+    background-color: #515151;
+    color: white;
+}

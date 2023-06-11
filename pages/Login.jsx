@@ -1,52 +1,36 @@
 import React from "react"
-import { useLoaderData, useNavigate, Form, redirect } from "react-router-dom"
+import { useLoaderData, useActionData, useNavigation, Form, redirect } from "react-router-dom"
 import { loginUser } from "../api"
 
 export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
 }
 
-export async function action(obj) {
-    const request = obj.request
+export async function action({request}) {
     const formData = await request.formData()
     const email = formData.get('email')
     const password = formData.get('password')
     const credentials = {email, password}
-    const data = await loginUser(credentials)
-    if (data) {
-        return redirect('/host')
+    let url = new URL(request.url).searchParams.get('redirectTo') || '/host'
+    try {
+        await loginUser(credentials)
+        return redirect(url)
+    } catch(err) {
+        return 'Error'
     }
 }
 
 export default function Login() {
-    // const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
-    // const [status, setStatus] = React.useState('idle')
-    // const [error, setError] = React.useState(null)
     const message = useLoaderData()
-    // const navigate = useNavigate()
-
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     setStatus('submitting')
-    //     setError(null)
-    //     loginUser(loginFormData)
-    //         .then(data => {
-    //             navigate('/host', {replace: true})
-    //             console.log(data)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //             setError(err)
-    //         })
-    //         .finally(() => setStatus(() => 'idle'))
-    // }
+    const error = useActionData()
+    const navigation = useNavigation()
 
     return (
         <div className="login-container">
             <h1>Sign in to your account</h1>
-            {/* {error && <h3 className="red">{error.message}</h3>} */}
+            {error && <h3 className="red">{error}</h3>}
             {message && <h3 className="red">{message}</h3>}
-            <Form method='post' className="login-form">
+            <Form method='post' className="login-form" replace>
                 <input
                     name="email"
                     type="email"
@@ -57,8 +41,8 @@ export default function Login() {
                     type="password"
                     placeholder="Password"
                 />
-                <button disabled={status === 'submitting'}>
-                    {status === 'submitting' ? 'Logging in' : 'Log in'}
+                <button disabled={navigation.state === 'submitting'}>
+                    {navigation.state === 'submitting' ? 'Logging in' : 'Log in'}
                 </button>
             </Form>
         </div>

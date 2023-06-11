@@ -33,12 +33,14 @@ export async function loginUser(creds) {
     const data = await res.json()
 
     if (!res.ok) {
+        localStorage.setItem('loggedin', false)
         throw {
             message: data.message,
             statusText: res.statusText,
             status: res.status
         }
     }
-
+    
+    localStorage.setItem('loggedin', true)
     return data
 }
